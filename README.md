@@ -4,21 +4,22 @@
 2.Configure TalwindCss with React App
 3.Header
 4.Login
- - Signin/Signup Form
+
+- Signin/Signup Form
 
 # Features
 
 - Login (Signin/Signup)
-    -Signin/Signup form
-    -redirect to browse page
+  -Signin/Signup form
+  -redirect to browse page
 
 - Browse(after authentication)
-    -Header
-    -Main Movie
-        -Movie Tralier in background
-        -Title & description
-        -Movie Suggestions
-            -Movie List * N
+  -Header
+  -Main Movie
+  -Movie Tralier in background
+  -Title & description
+  -Movie Suggestions
+  -Movie List \* N
 - NetflixGPT
-    -Search bar
-    -Movie Suggestions
+  -Search bar
+  -Movie Suggestions
