@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "./Header";
-import { Link } from "react-router-dom";
 
 const Login = () => {
+  const [toggleForm, setToggleForm] = useState(true);
+
+  const toggleSignupForm = () => {
+    setToggleForm(!toggleForm);
+  };
   return (
     <div className=" ">
       <div className="absolute w-52 bg-gradient-to-b from black px-2 py-2">
@@ -14,34 +18,49 @@ const Login = () => {
       <Header />
 
       <form
-        className="absolute  mt-24 mx-auto w-3/12 text-white bg-gradient-to-r from-cyan-600 to-indigo-700  
-       left-20 right-10 top-10  text-center   "
+        className="absolute  mt-24 mx-auto w-3/12 text-white bg-black 
+       left-20 right-10 top-10  text-center  bg-opacity-80 rounded-lg min-h-24 "
       >
-        <h1 className="m-2 p-4 text-3xl text-left mr-36 font-bold">Sign In</h1>
+        <h1 className="ml-6 mt-4  py-6 text-4xl text-left  font-bold">
+          {" "}
+          {toggleForm ? "Sign In" : "Sign Up"}
+        </h1>
+        {toggleForm ? (
+          ""
+        ) : (
+          <input
+            type="text"
+            placeholder="   Full Name"
+            className="w-2/3 bg-transparent border text-white text-xl border-white m-4 py-4 rounded-lg "
+          />
+        )}
         <input
           type="email"
-          placeholder="Email or mobile number"
-          className="w-2/3 bg-transparent border text-white text-xl border-white m-4 p-4"
+          placeholder="   Email address"
+          className="w-2/3 bg-transparent border text-white text-xl border-white m-4 py-4 rounded-lg "
         />
+
         <input
           type="password"
-          placeholder="Password"
-          className="w-2/3 bg-transparent border text-white text-xl border-white m-4 p-4"
+          placeholder="  Password"
+          className="w-2/3 bg-transparent border text-white text-xl border-white m-4 py-4 rounded-lg "
         />
-        <button className="m-4 p-4 bg-red-700 text-xl   text-center  mx-20 font-bold flex w-2/3  mr-44 cursor-pointer">
-          Sign In
+        <button
+          className="m-4 p-4 bg-red-600 text-xl 
+           mx-20 font-bold flex w-2/3 mr-44 cursor-pointer rounded-lg"
+        >
+          {toggleForm ? "Sign In" : "Sign Up"}
         </button>
-        <br/>
-        <p className=" m-0 text-center ">   OR</p>
-        <button className="m-4 p-4 mx-20  bg-cyan-600 hover:bg-gray-400 text-center font-bold text-xl flex w-2/3  mr-44 cursor-pointer">Use a sign-in code</button>
-     
-      <Link to="/browse" className="text-white text-xl">Forgot password?</Link>
-      <br/>
-      <br/>
-        <input type="checkbox" value="Remember me"  name="Remember me" className="text-left "/>
-        <label className="text-white mr-44 text-xl text-left">Remember me</label>
-        <p className="text-white mr-44 ml-12 text-lg text-left"> New to Netflix ? 
-        <Link to="/browse" className="text-l text-white font-bold ">Sign up now</Link></p>
+        <br />
+
+        <p
+          className="text-white    mb-6 pr-12 ml-24 text-lg text-left  cursor-pointer"
+          onClick={toggleSignupForm}
+        >
+          {toggleForm
+            ? "New to Netflix ? Sign up now "
+            : "Already registered ? Sign In now"}
+        </p>
       </form>
     </div>
   );

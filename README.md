@@ -4,7 +4,7 @@
 2.Configure TalwindCss with React App
 3.Header
 4.Login
-
+5.SignUp Form
 - Signin/Signup Form
 
 # Features
