@@ -1,11 +1,14 @@
 # Netflix GPT
 
-1.Create React App
-2.Configure TalwindCss with React App
-3.Header
-4.Login
-5.SignUp Form
-- Signin/Signup Form
+-.Create React App
+-.Configure Talwind Css 
+-.Header
+-.Routing of App
+-.Login
+-.SignUp Form
+-.Form Validation using Formik library
+-.useRef Hook
+- 
 
 # Features
 
