@@ -3,22 +3,21 @@ import Header from "./Header";
 import { checkValidFormData } from "../utils/validate";
 
 const Login = () => {
-
   const [toggleForm, setToggleForm] = useState(true);
-  const [erroMessage,setErrorMessage]=useState(null);
-  const email=useRef(null);
-  const password=useRef(null);
+  const [erroMessage, setErrorMessage] = useState(null);
+  const email = useRef(null);
+  const password = useRef(null);
 
-
-  const handleFormData = () =>{
+  const handleFormData = () => {
     // alert("Email",email.current.value);
-    const message=checkValidFormData(email.current.value, password.current.value);
-    
+    const message = checkValidFormData(
+      email.current.value,
+      password.current.value
+    );
+
     setErrorMessage(message);
     console.log(email.current.value, password.current.value);
-  
-
-  }
+  };
 
   const toggleSignupForm = () => {
     setToggleForm(!toggleForm);
@@ -34,7 +33,7 @@ const Login = () => {
       <Header />
 
       <form
-      onSubmit={(e)=>e.preventDefault()}
+        onSubmit={(e) => e.preventDefault()}
         className="absolute  mt-24 mx-auto w-3/12 text-white bg-black 
        left-20 right-10 top-10  text-center  bg-opacity-80 rounded-lg min-h-24 "
       >
@@ -68,7 +67,7 @@ const Login = () => {
         <button
           className="m-4 p-4 bg-red-600 text-xl 
            mx-20 font-bold flex w-2/3 mr-44 cursor-pointer rounded-lg"
-           onClick={handleFormData}
+          onClick={handleFormData}
         >
           {toggleForm ? "Sign In" : "Sign Up"}
         </button>
