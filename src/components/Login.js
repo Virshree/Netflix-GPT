@@ -1,10 +1,20 @@
 import React, { useRef, useState } from "react";
 import Header from "./Header";
 import { checkValidFormData } from "../utils/validate";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { auth } from "../utils/firebase";
+import { useNavigate } from "react-router-dom";
+import { addUser } from "../utils/userSlice";
+import { useDispatch } from "react-redux";
 
 const Login = () => {
   const [toggleForm, setToggleForm] = useState(true);
   const [erroMessage, setErrorMessage] = useState(null);
+  const dispatch=useDispatch();
+
+  const navigate=useNavigate();
+
+  const name=useRef(null);
   const email = useRef(null);
   const password = useRef(null);
 
@@ -17,6 +27,57 @@ const Login = () => {
 
     setErrorMessage(message);
     console.log(email.current.value, password.current.value);
+
+    if(message) return ;
+      //create a new user 
+
+      ///signin /signup login logic
+      if(!toggleForm){
+        //sign up logic
+        createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
+      .then((userCredential) => {
+        // Signed up 
+        const user = userCredential.user;
+        updateProfile(user, {
+          displayName: name.current.value,
+           photoURL:"https://avatars.githubusercontent.com/u/64579672?v=4"
+        }).then(() => {
+          // Profile updated!
+          const {uid,email,displayName,photoURL}=auth.currentUser;
+          dispatch(addUser({uid:uid,email:email,displayName:displayName,photoURL:photoURL}))
+
+          navigate("/browse")
+          
+        }).catch((error) => {
+          // An error occurred
+            setErrorMessage(error.message)
+        });
+        // console.log(user);
+        // navigate("/browse")
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        setErrorMessage(errorCode + "-"+ errorMessage);
+  });
+      }
+      else{
+        //sign in logic
+        signInWithEmailAndPassword(auth, email.current.value, password.current.value)
+        .then((userCredential) => {
+          // Signed in 
+          const user = userCredential.user;
+          console.log(user);
+          navigate("/browse")
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorMessage(errorCode +" - "+ errorMessage)
+        });
+
+      }
+
   };
 
   const toggleSignupForm = () => {
@@ -24,13 +85,15 @@ const Login = () => {
   };
   return (
     <div className=" ">
-      <div className="absolute w-52 bg-gradient-to-b from black px-2 py-2">
-        <img
-          src="https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png"
-          alt="logo"
-        />
+         <div className=" absolute opacity-100">
+         <img
+        src="https://user-images.githubusercontent.com/33485020/108069438-5ee79d80-7089-11eb-8264-08fdda7e0d11.jpg"
+        alt="bgimg"
+      />
+            
       </div>
       <Header />
+
 
       <form
         onSubmit={(e) => e.preventDefault()}
@@ -47,21 +110,24 @@ const Login = () => {
           <input
             type="text"
             placeholder="   Full Name"
-            className="w-2/3 bg-transparent border text-white text-xl border-white m-4 py-4 rounded-lg "
+            ref={name}
+            className="w-2/3 
+            bg-transparent border text-white text-xl border-white m-4 px-4 py-4 rounded-lg "
           />
         )}
         <input
           ref={email}
           type="email"
           placeholder="   Email address"
-          className="w-2/3 bg-transparent border text-white text-xl border-white m-4 py-4 rounded-lg "
+          className="w-2/3 bg-transparent border text-white text-xl border-white m-4 
+          px-4 py-4 rounded-lg "
         />
 
         <input
           ref={password}
           type="password"
           placeholder="  Password"
-          className="w-2/3 bg-transparent border text-white text-xl border-white m-4 py-4 rounded-lg "
+          className="w-2/3 bg-transparent border text-white text-xl border-white m-4 px-4  py-4 rounded-lg "
         />
         <p className="py-2 text-red-600 text-xl">{erroMessage}</p>
         <button
