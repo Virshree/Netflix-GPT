@@ -8,7 +8,7 @@ const Header = () => {
 
 const navigate=useNavigate();
 const user=useSelector((store)=>store?.user)
-console.log(user)
+// console.log(user)
 
   function handleSignOut(){
     signOut(auth).then(() => {
@@ -28,7 +28,8 @@ console.log(user)
       className="w-44"
     />
    
-    (<div
+   {user && (
+    <div
        className="flex  p-2 m-2">
             
       <img 
@@ -37,10 +38,8 @@ console.log(user)
      alt="usericon" />
       <button className="text-white font-bold text-xl m-2 p-2"
         onClick={handleSignOut}>Sign Out</button>
-      </div>)
-  
-   
-     
+      </div>
+   )} 
 
    
   </div>
