@@ -14,21 +14,35 @@
 - Created Redux store with userSlice (using firebase)
 - Implemented signout
 - Update Profile
+- Bug Fix: Sign Up user display Name and profile picture updated
+- Bug Fix: If the user is not logged in redirect to browse/login page and vice versa
+- Unsubscribe to the onAuthStateChanged callback
+- Add hardcoded values to the constants files
+- Register TMDB API & create  an app & access token
+- Get  Data from TMDB API now playing movies list API
+- Custom hook for now playing movies 
+- Created movie Slice
+- Update the store with movie Data
+- Planning for main Container & second container
+- Fetch Data for trailer Video
+- Update the store with Trailer Video Data
+- Embedd youtube video and make it auto play and mute.
+- Talwind css to make main container to look awesome
 
 
 # Features
 
 - Login (Signin/Signup)
-  -Signin/Signup form
-  -redirect to browse page
+  - Signin/Signup form
+  - redirect to browse page
 
 - Browse(after authentication)
-  -Header
-  -Main Movie
-  -Movie Tralier in background
-  -Title & description
-  -Movie Suggestions
-  -Movie List * N
+  - Header
+  - Main Movie
+  - Movie Tralier in background
+  - Title & description
+  - Movie Suggestions
+  - Movie List * N
 - NetflixGPT
-  -Search bar
-  -Movie Suggestions
+  - Search bar
+  - Movie Suggestions
