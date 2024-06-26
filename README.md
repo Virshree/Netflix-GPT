@@ -28,7 +28,8 @@
 - Update the store with Trailer Video Data
 - Embedd youtube video and make it auto play and mute.
 - Talwind css to make main container to look awesome
-
+- Build second container with movie list
+- Custom hooks for popular,toprated,upcoming movies
 
 # Features
 
