@@ -30,6 +30,9 @@
 - Talwind css to make main container to look awesome
 - Build second container with movie list
 - Custom hooks for popular,toprated,upcoming movies
+- Build GPT Search page and search bar Feature
+- Multi language feature in our app.(Bonus)
+
 
 # Features
 

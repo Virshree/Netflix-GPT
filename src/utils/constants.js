@@ -15,3 +15,20 @@ export const API_OPTIONS={
 }
 
 export const MOVIE_CDN_URL="https://image.tmdb.org/t/p/w300"
+
+export const SUPPORTED_LANGUAGES=[{
+  identifier:"en",
+  name:"English"
+},
+{
+  identifier:"hindi",
+  name:"Hindi"
+},
+{
+  identifier:"marathi",
+  name:"Marathi"
+},
+{
+  identifier:"spanish",
+  name:"Spanish"
+}]
